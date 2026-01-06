@@ -1,0 +1,55 @@
+[gd_scene load_steps=7 format=3 uid="uid://b1u5k23n1kk7m"]
+
+[ext_resource type="Script" uid="uid://dryvlquqy5djs" path="res://Scripts/pil.gd" id="1_fewqa"]
+[ext_resource type="PackedScene" uid="uid://cn3lt82w5ploe" path="res://Scenes/orb.tscn" id="2_b7llp"]
+[ext_resource type="Script" uid="uid://rmfavb28mc33" path="res://Scripts/label_support.gd" id="3_b7llp"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_b036f"]
+size = Vector2(12, 300)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wg6up"]
+size = Vector2(13, 298.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fewqa"]
+size = Vector2(346, 13)
+
+[node name="Pil" type="Node2D"]
+script = ExtResource("1_fewqa")
+orb_scene = ExtResource("2_b7llp")
+
+[node name="Camera" type="Camera2D" parent="."]
+position = Vector2(261, 151)
+scale = Vector2(0.48793995, 0.48793995)
+
+[node name="Walls" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls"]
+position = Vector2(94, 151)
+shape = SubResource("RectangleShape2D_b036f")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Walls"]
+position = Vector2(426.5, 150.75)
+shape = SubResource("RectangleShape2D_wg6up")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Walls"]
+position = Vector2(261, 294.5)
+shape = SubResource("RectangleShape2D_fewqa")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.5
+autostart = true
+
+[node name="SpawnPoint" type="Marker2D" parent="."]
+position = Vector2(264, -20)
+
+[node name="SpawnTimeout" type="Timer" parent="."]
+wait_time = 80.0
+autostart = true
+
+[node name="Label" type="Label" parent="."]
+offset_right = 40.0
+offset_bottom = 23.0
+script = ExtResource("3_b7llp")
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="SpawnTimeout" to="." method="_on_spawn_timeout_timeout"]

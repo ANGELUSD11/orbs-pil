@@ -1,0 +1,48 @@
+[gd_scene load_steps=15 format=3 uid="uid://cn3lt82w5ploe"]
+
+[ext_resource type="Script" uid="uid://ukx5lkpfge3" path="res://Scripts/orb.gd" id="1_ajoh1"]
+[ext_resource type="Texture2D" uid="uid://cavv6n41xwbwm" path="res://Assets/Sprites/yellowOrb.png" id="1_caui3"]
+[ext_resource type="Texture2D" uid="uid://dbh6u7e7w7pqq" path="res://Assets/Sprites/spiderOrb.png" id="3_5p587"]
+[ext_resource type="Texture2D" uid="uid://c3rbphnawxubf" path="res://Assets/Sprites/redOrb.png" id="4_3akk5"]
+[ext_resource type="Texture2D" uid="uid://di7anfnq1vns5" path="res://Assets/Sprites/purpleOrb.png" id="5_21s5d"]
+[ext_resource type="Texture2D" uid="uid://bmlder5tynary" path="res://Assets/Sprites/greenOrb.png" id="6_75c1p"]
+[ext_resource type="Texture2D" uid="uid://q4bucn8lf8s7" path="res://Assets/Sprites/dashOrbPurple.png" id="7_6tbh0"]
+[ext_resource type="Texture2D" uid="uid://e2ujlll1m0it" path="res://Assets/Sprites/dashOrbGreen.png" id="8_17dil"]
+[ext_resource type="Texture2D" uid="uid://cwvsmi0j3mynn" path="res://Assets/Sprites/blueOrb.png" id="9_mpllc"]
+[ext_resource type="Texture2D" uid="uid://bljcuw3etcrhs" path="res://Assets/Sprites/blackOrb.png" id="10_yibl7"]
+[ext_resource type="Texture2D" uid="uid://76lc6kj8niuj" path="res://Assets/Sprites/triggerOrb.png" id="11_c8r4h"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ryljl"]
+radius = 12.0
+
+[sub_resource type="Gradient" id="Gradient_ajoh1"]
+offsets = PackedFloat32Array(0.02, 1)
+colors = PackedColorArray(1, 0.63529414, 1, 0.09411765, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_5p587"]
+gradient = SubResource("Gradient_ajoh1")
+fill = 1
+fill_from = Vector2(0.5140187, 0.5)
+fill_to = Vector2(0.8785047, 0.046728972)
+
+[node name="Orb" type="RigidBody2D"]
+sleeping = true
+contact_monitor = true
+max_contacts_reported = 1
+linear_damp = 2.0
+angular_damp = 2.0
+script = ExtResource("1_ajoh1")
+textures = Array[Texture2D]([ExtResource("1_caui3"), ExtResource("3_5p587"), ExtResource("4_3akk5"), ExtResource("5_21s5d"), ExtResource("6_75c1p"), ExtResource("7_6tbh0"), ExtResource("8_17dil"), ExtResource("9_mpllc"), ExtResource("10_yibl7"), ExtResource("11_c8r4h")])
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("1_caui3")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(0.9188316, 0.9188316)
+shape = SubResource("CircleShape2D_ryljl")
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+scale = Vector2(0.79719174, 0.79719174)
+color = Color(1, 0.25882354, 1, 1)
+texture = SubResource("GradientTexture2D_5p587")
