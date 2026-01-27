@@ -23,7 +23,7 @@ Global="*res://Scripts/global.gd"
 
 window/size/viewport_width=520
 window/size/viewport_height=300
-window/size/mode=1
+window/size/mode=3
 window/stretch/mode="canvas_items"
 
 [physics]
@@ -33,4 +33,4 @@ common/max_physics_steps_per_frame=16
 
 [rendering]
 
-environment/defaults/default_clear_color=Color(0, 0, 0, 1)
+environment/defaults/default_clear_color=Color(0, 0, 0.8980392, 1)

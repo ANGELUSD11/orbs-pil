@@ -2,6 +2,7 @@ extends RigidBody2D
 
 @export var textures: Array[Texture2D]
 @onready var sprites = $Sprite2D
+@onready var colliders = $CollisionShape2D
 
 var freeze_umbral: float = 0.2
 var time_for_freeze: float = 0.01
@@ -17,7 +18,7 @@ func _ready() -> void:
 		sprites.texture = textures.pick_random()
 		
 	var base_scale: float = 0.2
-	var variation = randf_range(0.8, 1.2)
+	var variation = randf_range(0.8, 1.0)
 	var final_scale = base_scale * variation
 	
 	sprites.scale = Vector2(final_scale, final_scale)

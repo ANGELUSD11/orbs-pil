@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://b1u5k23n1kk7m"]
+[gd_scene load_steps=13 format=3 uid="uid://b1u5k23n1kk7m"]
 
 [ext_resource type="Script" uid="uid://dryvlquqy5djs" path="res://Scripts/pil.gd" id="1_fewqa"]
 [ext_resource type="PackedScene" uid="uid://cn3lt82w5ploe" path="res://Scenes/orb.tscn" id="2_b7llp"]
 [ext_resource type="Script" uid="uid://rmfavb28mc33" path="res://Scripts/label_support.gd" id="3_b7llp"]
+[ext_resource type="FontFile" uid="uid://dagkljf1gr8qn" path="res://Assets/Fonts/PUSAB___.otf" id="3_p8usf"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_b036f"]
 size = Vector2(12, 300)
@@ -12,6 +13,28 @@ size = Vector2(13, 298.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fewqa"]
 size = Vector2(346, 13)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_p8usf"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_a1e03"]
+font = ExtResource("3_p8usf")
+
+[sub_resource type="Curve" id="Curve_p8usf"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.06741583), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_a1e03"]
+curve = SubResource("Curve_p8usf")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_p8usf"]
+particle_flag_disable_z = true
+emission_shape_scale = Vector3(230, 310, 1)
+emission_shape = 3
+emission_box_extents = Vector3(1, 1, 1)
+spread = 180.0
+gravity = Vector3(0, 98, 0)
+scale_max = 5.0
+scale_curve = SubResource("CurveTexture_a1e03")
 
 [node name="Pil" type="Node2D"]
 script = ExtResource("1_fewqa")
@@ -35,6 +58,11 @@ shape = SubResource("RectangleShape2D_wg6up")
 position = Vector2(261, 294.5)
 shape = SubResource("RectangleShape2D_fewqa")
 
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="Walls"]
+position = Vector2(264, 269.00003)
+scale = Vector2(1.9170432, 1.9170432)
+shape = SubResource("RectangleShape2D_p8usf")
+
 [node name="Timer" type="Timer" parent="."]
 wait_time = 0.5
 autostart = true
@@ -47,9 +75,18 @@ wait_time = 80.0
 autostart = true
 
 [node name="Label" type="Label" parent="."]
-offset_right = 40.0
-offset_bottom = 23.0
+offset_left = 6.0
+offset_top = 5.0
+offset_right = 46.0
+offset_bottom = 28.0
+label_settings = SubResource("LabelSettings_a1e03")
 script = ExtResource("3_b7llp")
+
+[node name="AmbientParticles" type="GPUParticles2D" parent="."]
+visible = false
+position = Vector2(265, 45)
+scale = Vector2(0.73443, 0.73443)
+process_material = SubResource("ParticleProcessMaterial_p8usf")
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="timeout" from="SpawnTimeout" to="." method="_on_spawn_timeout_timeout"]
