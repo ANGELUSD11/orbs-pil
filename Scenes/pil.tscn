@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://b1u5k23n1kk7m"]
+[gd_scene load_steps=12 format=3 uid="uid://b1u5k23n1kk7m"]
 
 [ext_resource type="Script" uid="uid://dryvlquqy5djs" path="res://Scripts/pil.gd" id="1_fewqa"]
 [ext_resource type="PackedScene" uid="uid://cn3lt82w5ploe" path="res://Scenes/orb.tscn" id="2_b7llp"]
@@ -13,8 +13,6 @@ size = Vector2(13, 298.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fewqa"]
 size = Vector2(346, 13)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_p8usf"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_a1e03"]
 font = ExtResource("3_p8usf")
@@ -58,11 +56,6 @@ shape = SubResource("RectangleShape2D_wg6up")
 position = Vector2(261, 294.5)
 shape = SubResource("RectangleShape2D_fewqa")
 
-[node name="CollisionShape2D4" type="CollisionShape2D" parent="Walls"]
-position = Vector2(264, 269.00003)
-scale = Vector2(1.9170432, 1.9170432)
-shape = SubResource("RectangleShape2D_p8usf")
-
 [node name="Timer" type="Timer" parent="."]
 wait_time = 0.5
 autostart = true
@@ -83,7 +76,6 @@ label_settings = SubResource("LabelSettings_a1e03")
 script = ExtResource("3_b7llp")
 
 [node name="AmbientParticles" type="GPUParticles2D" parent="."]
-visible = false
 position = Vector2(265, 45)
 scale = Vector2(0.73443, 0.73443)
 process_material = SubResource("ParticleProcessMaterial_p8usf")

@@ -33,4 +33,4 @@ common/max_physics_steps_per_frame=16
 
 [rendering]
 
-environment/defaults/default_clear_color=Color(0, 0, 0.8980392, 1)
+environment/defaults/default_clear_color=Color(0, 0, 0, 1)
